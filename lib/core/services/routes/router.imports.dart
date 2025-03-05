@@ -1,4 +1,21 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:olofooto/core/common/app/cache_helper.dart';
+import 'package:olofooto/core/services/injections/injection_container.imports.dart';
+import 'package:olofooto/core/utils/typedefs.dart';
+import 'package:olofooto/src/auth/presentation/app/bloc/auth_bloc.dart';
+import 'package:olofooto/src/auth/presentation/app/providers/otp_timer_provider.dart';
+import 'package:olofooto/src/auth/presentation/app/providers/sign_up_controllers_provider.dart';
+import 'package:olofooto/src/auth/presentation/views/forgot_password_screen.dart';
+import 'package:olofooto/src/auth/presentation/views/otp_screen.dart';
+import 'package:olofooto/src/auth/presentation/views/set_new_password_screen.dart';
+import 'package:olofooto/src/auth/presentation/views/sign_in_screen.dart';
+import 'package:olofooto/src/auth/presentation/views/sign_up_screen.dart';
+import 'package:olofooto/src/auth/presentation/views/welcome_screens.dart';
+import 'package:olofooto/src/dashbaord/presentation/views/dashboard_screen.dart';
+import 'package:olofooto/src/home/presentation/views/home_view.dart';
 import 'package:olofooto/src/onboarding/presentation/views/onboarding_screen.dart';
+import 'package:olofooto/src/profile/presentaton/views/profile_view.dart';
+import 'package:provider/provider.dart';
 
 part 'router.dart';

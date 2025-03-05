@@ -1,15 +1,16 @@
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
+import 'package:olofooto/core/common/entities/user.dart';
 import 'package:olofooto/core/usecase/usecase.dart';
 import 'package:olofooto/core/utils/typedefs.dart';
 import 'package:olofooto/src/auth/domain/repository/auth_repository.dart';
 
-class RegisterUser implements UsecasesWithParams<void, RegisterUserParams> {
+class RegisterUser implements UsecasesWithParams<User, RegisterUserParams> {
   const RegisterUser(this._authRepository);
   final AuthRepository _authRepository;
   @override
-  ResultFuture<void> call(RegisterUserParams params) =>
+  ResultFuture<User> call(RegisterUserParams params) async =>
       _authRepository.registerUser(
         fullname: params.fullname,
         email: params.email,

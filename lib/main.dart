@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:olofooto/core/common/resources/style/app_theme.dart';
+import 'package:olofooto/core/services/injections/injection_container.imports.dart';
 import 'package:olofooto/core/services/routes/router.imports.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const Olofooto());
 }
 

@@ -4,11 +4,12 @@ import 'package:olofooto/core/common/resources/style/colors.dart';
 
 abstract class AppTheme {
   static final appTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
     fontFamily: GoogleFonts.poppins().fontFamily,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    scaffoldBackgroundColor: AppColors.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.white,
       titleTextStyle: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
@@ -16,8 +17,8 @@ abstract class AppTheme {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        backgroundColor: AppColors.whiteColor,
-        foregroundColor: AppColors.blackColor,
+        backgroundColor: AppColors.white,
+        foregroundColor: AppColors.black,
         side: const BorderSide(),
         minimumSize: const Size(double.maxFinite, 50),
         padding: const EdgeInsets.all(10),
@@ -32,8 +33,8 @@ abstract class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.white,
         minimumSize: const Size(double.maxFinite, 50),
         padding: const EdgeInsets.all(10),
         shape: RoundedRectangleBorder(
@@ -47,13 +48,20 @@ abstract class AppTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
+        overlayColor: Colors.transparent,
+        foregroundColor: AppColors.primary,
         padding: EdgeInsets.zero,
-        backgroundColor: AppColors.primaryColor,
         textStyle: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
       ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.black,
+      enableFeedback: true,
     ),
   );
 }

@@ -1,12 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:olofooto/core/utils/typedefs.dart';
 
 abstract class AppException extends Equatable implements Exception {
   const AppException({
-    required this.errorMessage,
-    required this.statusCode,
+    this.errorMessage = 'Internal server Error',
+    this.statusCode = 500,
   });
-  final String errorMessage;
-  final int statusCode;
+  final String? errorMessage;
+  final int? statusCode;
 
   @override
   List<Object?> get props => [errorMessage, statusCode];
@@ -17,6 +19,13 @@ class ServerException extends AppException {
     required super.errorMessage,
     required super.statusCode,
   });
+  factory ServerException.fromDioException(DioException e) {
+    final data = e.response?.data as DataMap?;
+    return ServerException(
+      errorMessage: data?['message'] as String?,
+      statusCode: e.response?.statusCode,
+    );
+  }
 }
 
 class DartException extends AppException {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:olofooto/core/common/resources/medias.dart';
+import 'package:olofooto/src/onboarding/presentation/utils/onboarding_utils.dart';
 import 'package:olofooto/src/onboarding/presentation/widgets/onboarding_info.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
@@ -51,8 +52,8 @@ class OnboardingScreen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: OnboardingInfo(
-        onClick: () {
-          // TODO(cache): cache the user and send to sign-up
+        onClick: () async {
+          await OnboardingUtils.navigateToAuthentication(context: context);
         },
         imagePath: Medias.onboarding1,
         isLast: true,

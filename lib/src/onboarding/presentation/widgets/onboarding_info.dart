@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:olofooto/core/common/resources/style/text.dart';
 import 'package:olofooto/core/common/widgets/clickable_text.dart';
+import 'package:olofooto/src/onboarding/presentation/utils/onboarding_utils.dart';
 
 class OnboardingInfo extends StatelessWidget {
   const OnboardingInfo({
@@ -30,12 +31,12 @@ class OnboardingInfo extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               title,
-              style: AppTextStyles.largeTextStyle,
+              style: AppTextStyles.large,
             ),
             const SizedBox(height: 10),
             Text(
               subTitle,
-              style: AppTextStyles.mediumTextStyle,
+              style: AppTextStyles.medium,
             ),
             const SizedBox(height: 30),
             ElevatedButton(
@@ -47,8 +48,10 @@ class OnboardingInfo extends StatelessWidget {
             const SizedBox(height: 20),
             if (!isLast)
               OutlinedButton(
-                onPressed: () {
-                  // TODO(navigate): Navigate to the auth sign up screen
+                onPressed: () async {
+                  await OnboardingUtils.navigateToAuthentication(
+                    context: context,
+                  );
                 },
                 child: const Text('Skip'),
               ),
@@ -56,8 +59,11 @@ class OnboardingInfo extends StatelessWidget {
             ClickableText(
               title: 'Already have an account?',
               actionText: 'Sign In',
-              onPressed: () {
-                // TODO(navigate): Navigate to the auth sign in screen
+              onPressed: () async {
+                await OnboardingUtils.navigateToAuthentication(
+                  isToSignIn: true,
+                  context: context,
+                );
               },
             ),
           ],

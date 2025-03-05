@@ -1,14 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:olofooto/core/usecase/usecase.dart';
 import 'package:olofooto/core/utils/typedefs.dart';
-import 'package:olofooto/src/auth/domain/entities/tokens.dart';
 import 'package:olofooto/src/auth/domain/repository/auth_repository.dart';
 
-class Login implements UsecasesWithParams<Tokens, LoginParams> {
+class Login implements UsecasesWithParams<void, LoginParams> {
   const Login(this._repository);
   final AuthRepository _repository;
   @override
-  ResultFuture<Tokens> call(LoginParams params) =>
+  ResultFuture<void> call(LoginParams params) =>
       _repository.login(email: params.email, password: params.password);
 }
 

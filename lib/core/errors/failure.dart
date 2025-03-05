@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:olofooto/core/errors/exception.dart';
 
 abstract class Failure extends Equatable {
   const Failure({
@@ -21,11 +22,15 @@ class ServerFailure extends Failure {
     required super.errorMessage,
     required super.statusCode,
   });
+  factory ServerFailure.fromException(AppException e) {
+    return ServerFailure(
+      errorMessage: e.errorMessage ?? 'Internal server Error',
+      statusCode: e.statusCode ?? 500,
+    );
+  }
 }
 
 class DartFailure extends Failure {
-  const DartFailure({
-    super.errorMessage = 'Something went wrong',
-    super.statusCode = 408,
-  });
+  const DartFailure()
+      : super(errorMessage: 'something went wrong', statusCode: 405);
 }

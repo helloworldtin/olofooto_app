@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:olofooto/core/common/entities/user.dart';
 import 'package:olofooto/core/utils/typedefs.dart';
-import 'package:olofooto/src/auth/domain/entities/tokens.dart';
 
 abstract interface class AuthRepository {
   const AuthRepository();
@@ -22,7 +21,7 @@ abstract interface class AuthRepository {
     required String email,
     required String otp,
   });
-  ResultFuture<Tokens> login({
+  ResultVoid login({
     required String email,
     required String password,
   });
@@ -32,14 +31,8 @@ abstract interface class AuthRepository {
     required String email,
     required String newPassword,
   });
-  ResultFuture<Tokens> getNewTokens();
-  ResultVoid updateProfile(File newProfileFile);
-  ResultVoid updateUserData({
-    String? fullname,
-    String? gender,
-    String? about,
-    String? username,
-  });
+  ResultVoid getNewTokens();
+
   ResultVoid updatePassword({
     required String oldPassword,
     required String newPassword,

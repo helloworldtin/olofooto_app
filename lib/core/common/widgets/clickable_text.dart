@@ -8,22 +8,24 @@ class ClickableText extends StatelessWidget {
     required this.onPressed,
     super.key,
     this.actionTextColor,
+    this.mainAxisAlignment,
   });
   final String title;
   final String actionText;
   final VoidCallback onPressed;
   final Color? actionTextColor;
+  final MainAxisAlignment? mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
       children: [
         Text(
           '$title ',
           style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 14,
-            color: AppColors.blackColor,
+            color: AppColors.black,
           ),
         ),
         GestureDetector(
